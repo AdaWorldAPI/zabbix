@@ -170,7 +170,9 @@ Check, and note the results in the acceptance table (never commit the response):
 | `FirstName`, `SurName`, `Email` | present |
 | signature | note whether `<ds:Signature>` sits under `Response`, under `Assertion`, or both; set Zabbix "Sign" accordingly (README) |
 
-Only then turn on JIT provisioning in Zabbix and run the acceptance checks.
+Only then tick **Enable JIT provisioning** in Zabbix (Users → Authentication →
+SAML settings; "Configure JIT provisioning" alone provisions nobody, and
+first-time users are refused) and run the acceptance checks.
 
 ## Rollback
 
