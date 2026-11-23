@@ -168,7 +168,8 @@ stops working.
    groups and roles").
 6. Do the Zitadel steps in [ZITADEL-SAML-SETUP.md](ZITADEL-SAML-SETUP.md),
    including verifying the real assertion.
-7. Configure SAML in Zabbix (next section), enable it, and run the acceptance
+7. Configure SAML in Zabbix (next section), enable it, tick **Enable JIT
+   provisioning**, and run the acceptance
    checks with test users before giving anyone else access.
 
 ## Zabbix groups and roles
@@ -205,7 +206,8 @@ Users → Authentication → SAML settings:
 | Sign | AuthN requests: on; Messages / Assertions: the element the verified response signs (see below); Logout requests/responses: on if SLO is used |
 | Encrypt | off |
 | Case-sensitive login | on |
-| Configure JIT provisioning | on |
+| Enable JIT provisioning | on, but only after the assertion check (ZITADEL-SAML-SETUP.md §7); this separate checkbox is what lets Zabbix create and update users at login |
+| Configure JIT provisioning | on (shows the fields below; on its own it provisions nobody) |
 | Group name attribute | `Roles` |
 | User name attribute | `FirstName` |
 | User last name attribute | `SurName` |
