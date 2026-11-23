@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Zabbix SP metadata for Zitadel. Render with render-sp-metadata.sh; do not
+     upload this template directly. ZABBIX_DOMAIN is the public HTTPS host name
+     (no scheme). The KeyDescriptor carries the SP signing certificate because
+     the Zitadel IdP metadata declares WantAuthnRequestsSigned. -->
+<md:EntityDescriptor
+  xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
+  xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+  entityID="https://ZABBIX_DOMAIN/zabbix-sp">
+  <md:SPSSODescriptor
+    AuthnRequestsSigned="true"
+    WantAssertionsSigned="true"
+    protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+    <md:KeyDescriptor use="signing">
+      <ds:KeyInfo>
+        <ds:X509Data>
+          <ds:X509Certificate>SP_CERT_BASE64</ds:X509Certificate>
+        </ds:X509Data>
+      </ds:KeyInfo>
+    </md:KeyDescriptor>
+    <md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</md:NameIDFormat>
+    <md:AssertionConsumerService
+      Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+      Location="https://ZABBIX_DOMAIN/index_sso.php?acs"
+      index="0"/>
+  </md:SPSSODescriptor>
+</md:EntityDescriptor>
